@@ -1,23 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  @apply bg-slate-900 text-slate-100;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  @apply bg-slate-950 text-slate-100;
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
 }
 
-/* hide spinner on number inputs */
+/* ---- Custom scrollbar ---- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
+
+/* ---- Hide number input spinners ---- */
 input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 
-/* call screen pulse */
-@keyframes pulse-ring {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
-}
-.pulse-ring { animation: pulse-ring 2s infinite; }
+/* ---- Gradient text ---- */
+.text-gradient { background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* ---- Glass panels ---- */
+.glass { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); }
+.glass-hover { transition: all 0.3s ease; }
+.glass-hover:hover { background: rgba(30,41,59,0.8); border-color: rgba(255,255,255,0.15); }
+
+/* ---- Gradient buttons ---- */
+.btn-gradient { background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); transition: all 0.3s ease; }
+.btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -10px rgba(59,130,246,0.35); background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); }
+.btn-gradient:active { transform: translateY(0); }
+
+/* ---- Danger button ---- */
+.btn-danger { background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); transition: all 0.3s ease; }
+.btn-danger:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -10px rgba(239,68,68,0.35); }
+
+/* ---- Success button ---- */
+.btn-success { background: linear-gradient(135deg, #10b981 0%, #059669 100%); transition: all 0.3s ease; }
+.btn-success:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -10px rgba(16,185,129,0.35); }
+
+/* ---- Avatar gradients ---- */
+.avatar-gradient-1 { background: linear-gradient(135deg, #3b82f6, #8b5cf6); }
+.avatar-gradient-2 { background: linear-gradient(135deg, #f472b6, #ec4899); }
+.avatar-gradient-3 { background: linear-gradient(135deg, #10b981, #3b82f6); }
+.avatar-gradient-4 { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+.avatar-gradient-5 { background: linear-gradient(135deg, #a78bfa, #f472b6); }
+
+/* ---- Animations ---- */
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@keyframes pulse-glow { 0%,100% { box-shadow: 0 0 20px rgba(59,130,246,0.2); } 50% { box-shadow: 0 0 40px rgba(59,130,246,0.5); } }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+@keyframes ring-pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59,130,246,0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(59,130,246,0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59,130,246,0); } }
+.animate-ring-pulse { animation: ring-pulse 2.5s infinite; }
+
+@keyframes slide-in-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.animate-slide-up { animation: slide-in-up 0.6s ease-out forwards; }
+
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+.animate-fast-fade { animation: fade-in 0.3s ease-out forwards; }
+
+@keyframes countdown-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+.animate-countdown { animation: countdown-pulse 1s ease-in-out infinite; }
+
+/* ---- Call screen background blur ---- */
+.call-bg-blur { position: fixed; inset: 0; z-index: -1; background: radial-gradient(circle at 20% 30%, rgba(59,130,246,0.15) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(139,92,246,0.15) 0%, transparent 50%); }
+
+/* ---- Focus rings ---- */
+.focus-ring:focus { outline: none; box-shadow: 0 0 0 3px rgba(59,130,246,0.3); }
+
+/* ---- Checkbox / radio custom ---- */
+.check-custom { appearance: none; width: 20px; height: 20px; border: 2px rgba(255,255,255,0.2) solid; border-radius: 5px; cursor: pointer; position: relative; transition: all 0.2s; }
+.check-custom:checked { background: #3b82f6; border-color: #3b82f6; }
+.check-custom:checked::after { content: "✓"; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); color: white; font-weight: bold; font-size: 12px; }
+
+/* ---- Toggle switch ---- */
+.toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle-slider { position: absolute; cursor: pointer; inset: 0; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; border-radius: 24px; }
+.toggle-slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 2px; bottom: 2px; background: white; transition: 0.3s; border-radius: 50%; }
+.toggle input:checked + .toggle-slider { background: #3b82f6; border-color: #3b82f6; }
+.toggle input:checked + .toggle-slider:before { transform: translateX(20px); }
+
+/* ---- Range slider ---- */
+input[type="range"] { -webkit-appearance: none; width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; outline: none; }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: #3b82f6; border-radius: 50%; cursor: pointer; box-shadow: 0 0 10px rgba(59,130,246,0.5); }
+
+/* ---- Input field ---- */
+.input-field { @apply w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 focus:ring-2 focus-ring focus:border-transparent outline-none transition; }
+
+/* ---- Card ---- */
+.card { @apply glass rounded-2xl p-6; }

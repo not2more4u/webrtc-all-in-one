@@ -3,5 +3,17 @@
     "id": "4188f575-a7c8-4625-a411-70c259fd5298",
     "username": "alice",
     "online": false
+  },
+  {
+    "id": "da912ee3-87bf-4653-a0ca-a6160ca71f94",
+    "username": "abdalrahman",
+    "online": false,
+    "socketId": null
+  },
+  {
+    "id": "50e8d749-e493-48b4-abab-bf031e377f67",
+    "username": "yo",
+    "online": false,
+    "socketId": null
   }
 ]
